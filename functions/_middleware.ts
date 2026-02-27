@@ -1,0 +1,5 @@
+export async function onRequest(context) {
+  const response = await context.next();
+  response.headers.set('Content-Security-Policy', "frame-ancestors 'self' https://*.walletconnect.com https://*.walletconnect.org; connect-src 'self' https://*.walletconnect.com wss://*.walletconnect.com wss://*.walletconnect.org https://*.walletconnect.org; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.walletconnect.com; upgrade-insecure-requests");
+  return response;
+}
